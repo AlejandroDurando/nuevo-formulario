@@ -26,11 +26,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      cursor: url('puntero.png') 8 4, auto;
-    }
-
-    a, button, label, input, textarea, select {
-      cursor: url('puntero.png') 8 4, pointer;
     }
 
     /* HEADER */
@@ -329,10 +324,15 @@
     }
 
     @media (max-width: 600px) {
-      .header { padding: 24px 20px; }
-      .intro, .question { padding: 24px 20px; }
-      main { padding: 32px 16px; }
-      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+      .header { padding: 20px 16px; gap: 14px; }
+      .logo img { height: 48px; }
+      .header-text h1 { font-size: 18px; }
+      .intro, .question { padding: 20px 16px; }
+      .q-text { font-size: 15px; }
+      main { padding: 20px 12px; }
+      .btn { width: 100%; text-align: center; }
+      .submit-wrap { justify-content: stretch; }
+      footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; gap: 10px; }
     }
   </style>
 </head>
