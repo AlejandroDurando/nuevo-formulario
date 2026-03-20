@@ -458,16 +458,34 @@
   </footer>
 
   <script>
-    document.getElementById('form').addEventListener('submit', function(e) {
+    const WEBHOOK_URL = 'https://3a4d-190-106-84-7.ngrok-free.app/webhook/M4B5DyvY44zTa7aO/webhook/encuesta-artevisual';
+
+    document.getElementById('form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('btn-submit');
       btn.textContent = 'Enviando...';
       btn.disabled = true;
 
-      setTimeout(() => {
-        document.getElementById('form').style.display = 'none';
-        document.getElementById('success').style.display = 'block';
-      }, 600);
+      const data = {
+        p1: this.p1 ? this.p1.value : '',
+        p2: this.p2 ? this.p2.value : '',
+        p3: this.p3 ? this.p3.value : '',
+        p4: this.p4 ? this.p4.value : '',
+        p5: this.p5 ? this.p5.value : ''
+      };
+
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch (err) {
+        console.error('Webhook error:', err);
+      }
+
+      document.getElementById('form').style.display = 'none';
+      document.getElementById('success').style.display = 'block';
     });
   </script>
 
