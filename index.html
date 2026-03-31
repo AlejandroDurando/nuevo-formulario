@@ -9,95 +9,228 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap"
     rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --red: #de0a14; --red-dark: #b8080f; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
-      width: 100%; height: 100%; overflow: hidden;
-      font-family: 'Montserrat', sans-serif; background: #0e0e0e;
+    :root {
+      --red: #de0a14;
+      --red-dark: #b8080f;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      background: #0e0e0e;
     }
 
     /* ══════════════════════════════════
        VELO NEGRO
     ══════════════════════════════════ */
     #veil {
-      position: fixed; inset: 0; background: #000; z-index: 30;
-      opacity: 0; pointer-events: none; transition: opacity 2.5s ease;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 2.5s ease;
     }
-    #veil.active { opacity: 1; pointer-events: all; }
-    #veil.gone   { opacity: 0; pointer-events: none; }
+
+    #veil.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #veil.gone {
+      opacity: 0;
+      pointer-events: none;
+    }
 
     /* ══════════════════════════════════
        VIDEO 1: presentación
     ══════════════════════════════════ */
-    #cover1 { position: fixed; inset: 0; z-index: 25; background: #000; }
-    #cover1 video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    #cover1.gone  { display: none; }
+    #cover1 {
+      position: fixed;
+      inset: 0;
+      z-index: 25;
+      background: #000;
+    }
+
+    #cover1 video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #cover1.gone {
+      display: none;
+    }
 
     /* ══════════════════════════════════
        INTRO: texto + botón
     ══════════════════════════════════ */
     #intro {
-      position: fixed; inset: 0; z-index: 22;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 1.4s ease;
+      position: fixed;
+      inset: 0;
+      z-index: 22;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.4s ease;
     }
-    #intro.visible { opacity: 1; pointer-events: all; }
-    #intro.gone    { opacity: 0; pointer-events: none; }
+
+    #intro.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #intro.gone {
+      opacity: 0;
+      pointer-events: none;
+    }
 
     .intro-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.32em;
-      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 20px;
     }
+
     .intro-title {
-      font-size: clamp(32px, 5vw, 62px); font-weight: 900;
-      color: #fff; line-height: 1.0; text-align: center; margin-bottom: 10px;
+      font-size: clamp(32px, 5vw, 62px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.0;
+      text-align: center;
+      margin-bottom: 10px;
     }
-    .intro-title em { display: block; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.45); }
-    .intro-line { width: 40px; height: 1px; background: var(--red); margin: 28px auto; }
+
+    .intro-title em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .intro-line {
+      width: 40px;
+      height: 1px;
+      background: var(--red);
+      margin: 28px auto;
+    }
+
     .btn-intro {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.25);
-      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800;
-      letter-spacing: 0.24em; text-transform: uppercase; padding: 15px 40px;
-      cursor: pointer; transition: border-color 0.25s, background 0.25s, transform 0.2s; border-radius: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      padding: 15px 40px;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s, transform 0.2s;
+      border-radius: 1px;
     }
-    .btn-intro:hover { border-color: var(--red); background: rgba(222,10,20,0.08); transform: translateY(-2px); }
+
+    .btn-intro:hover {
+      border-color: var(--red);
+      background: rgba(222, 10, 20, 0.08);
+      transform: translateY(-2px);
+    }
 
     /* ══════════════════════════════════
        LAYERS DE VIDEO (todos comparten fade-out)
     ══════════════════════════════════ */
     .vid-layer {
-      position: fixed; inset: 0; background: #000; display: none; overflow: hidden;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: none;
+      overflow: hidden;
     }
-    .vid-layer video {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    }
-    .vid-layer.fade-out { animation: videoFadeOut 1.0s ease forwards; }
-    @keyframes videoFadeOut { 0% { opacity: 1; } 100% { opacity: 0; } }
 
-    #cover-video  { z-index: 24; }
-    #cover-video2 { z-index: 23; }
+    .vid-layer video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .vid-layer.fade-out {
+      animation: videoFadeOut 1.0s ease forwards;
+    }
+
+    @keyframes videoFadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #cover-video {
+      z-index: 24;
+    }
+
+    #cover-video2 {
+      z-index: 23;
+    }
+
     /* clip1 y clip2 van detrás del overlay de preguntas pero sobre el fondo */
-    #cover-clip1  { z-index: 15; }
-    #cover-clip2  { z-index: 15; }
+    #cover-clip1 {
+      z-index: 15;
+    }
+
+    #cover-clip2 {
+      z-index: 15;
+    }
 
     /* ══════════════════════════════════
        OVERLAY DE PREGUNTAS (sobre el video)
     ══════════════════════════════════ */
     #tw-scene {
-      position: fixed; inset: 0; z-index: 20;
+      position: fixed;
+      inset: 0;
+      z-index: 20;
       display: none;
-      pointer-events: none;   /* el container interno activa los eventos */
+      pointer-events: none;
+      /* el container interno activa los eventos */
       opacity: 0;
       transition: opacity 0.6s ease;
     }
-    #tw-scene.visible { opacity: 1; }
+
+    #tw-scene.visible {
+      opacity: 1;
+    }
 
     /* Contenedor posicionado sobre la página blanca */
     #tw-container {
       position: absolute;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       pointer-events: all;
       transition: opacity 0.28s ease;
       overflow-y: auto;
@@ -105,171 +238,438 @@
 
     /* ── Q1: página derecha (hoja única, clip1) ── */
     #tw-container.pos-right-single {
-      left: 53%; right: 22%;
-      top: 18%; bottom: 4%;
+      left: 53%;
+      right: 22%;
+      top: 18%;
+      bottom: 4%;
     }
 
     /* ── Q2: página izquierda (doble hoja, clip2) ── */
     #tw-container.pos-left-double {
-      left: 18%; right: 52%;
-      top: 19%; bottom: 4%;
+      left: 18%;
+      right: 52%;
+      top: 19%;
+      bottom: 4%;
     }
 
     /* ── Q3/Q4/Q5: página derecha (doble hoja, clip2) ── */
     #tw-container.pos-right-double {
-      left: 53%; right: 22%;
-      top: 18%; bottom: 4%;
+      left: 53%;
+      right: 22%;
+      top: 18%;
+      bottom: 4%;
     }
 
     /* ── Q4, Q5: página derecha (hoja única, clip1) ── */
     #tw-container.pos-right-single-b {
-      left: 53%; right: 22%;
-      top: 18%; bottom: 4%;
+      left: 53%;
+      right: 22%;
+      top: 18%;
+      bottom: 4%;
     }
 
     #tw-header {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: clamp(16px, 3vh, 32px);
     }
-    .tw-logo { height: 18px; width: auto; opacity: 0.5; }
-    #tw-qnum { font-size: 9px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #aaa; }
+
+    .tw-logo {
+      height: 18px;
+      width: auto;
+      opacity: 0.5;
+    }
+
+    #tw-qnum {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
 
     /* La pregunta — tinta sobre papel */
     #tw-question {
       font-size: clamp(16px, 2.2vw, 26px);
-      font-weight: 700; color: #2a2a2a; line-height: 1.38;
-      margin-bottom: 24px; min-height: 1.5em;
+      font-weight: 700;
+      color: #2a2a2a;
+      line-height: 1.38;
+      margin-bottom: 24px;
+      min-height: 1.5em;
       opacity: 0.82;
     }
 
     /* Cursor parpadeante rojo */
     .tw-cursor {
-      display: inline-block; width: 2.5px; height: 1.05em;
-      background: var(--red); margin-left: 2px;
+      display: inline-block;
+      width: 2.5px;
+      height: 1.05em;
+      background: var(--red);
+      margin-left: 2px;
       vertical-align: text-bottom;
       animation: blink 0.65s step-end infinite;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
 
     /* Opciones */
     #tw-options {
-      display: flex; flex-direction: column; gap: 8px;
-      opacity: 0; transition: opacity 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
-    #tw-options.visible { opacity: 1; }
+
+    #tw-options.visible {
+      opacity: 1;
+    }
 
     .tw-option {
-      display: flex; align-items: center; gap: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       background: transparent;
       border: 1.5px solid #3a3a3a;
-      border-radius: 5px; padding: 10px 14px; cursor: pointer;
+      border-radius: 5px;
+      padding: 10px 14px;
+      cursor: pointer;
       transition: border-color 0.18s, background 0.18s, transform 0.15s;
     }
-    .tw-option:hover { border-color: var(--red); background: rgba(222,10,20,0.04); transform: translateX(3px); }
-    .tw-option:has(input:checked) { border-color: var(--red); background: rgba(222,10,20,0.06); transform: translateX(3px); }
-    .tw-option:has(input:checked) span { color: var(--red); font-weight: 700; }
-    .tw-option input[type="radio"] { width: 14px; height: 14px; min-width: 14px; accent-color: var(--red); cursor: pointer; }
-    .tw-option span { font-size: 12px; font-weight: 500; color: #3a3a3a; }
+
+    .tw-option:hover {
+      border-color: var(--red);
+      background: rgba(222, 10, 20, 0.04);
+      transform: translateX(3px);
+    }
+
+    .tw-option:has(input:checked) {
+      border-color: var(--red);
+      background: rgba(222, 10, 20, 0.06);
+      transform: translateX(3px);
+    }
+
+    .tw-option:has(input:checked) span {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .tw-option input[type="radio"] {
+      width: 14px;
+      height: 14px;
+      min-width: 14px;
+      accent-color: var(--red);
+      cursor: pointer;
+    }
+
+    .tw-option span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #3a3a3a;
+    }
 
     /* Hint */
-    #tw-hint { font-size: 11px; color: #aaa; font-style: italic; margin-bottom: 10px; opacity: 0; transition: opacity 0.5s ease; }
-    #tw-hint.visible { opacity: 1; }
+    #tw-hint {
+      font-size: 11px;
+      color: #aaa;
+      font-style: italic;
+      margin-bottom: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #tw-hint.visible {
+      opacity: 1;
+    }
 
     /* Textarea */
     #tw-textarea {
-      display: none; width: 100%;
+      display: none;
+      width: 100%;
       background: #f7f7f7;
-      border: 1.5px solid #e0e0e0; border-radius: 5px;
-      color: #3a3a3a; font-family: 'Montserrat', sans-serif;
-      font-size: 12px; padding: 11px 14px;
-      outline: none; resize: none; height: 110px; line-height: 1.6;
-      opacity: 0; transition: opacity 0.5s ease, border-color 0.2s, background 0.2s;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 5px;
+      color: #3a3a3a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      padding: 11px 14px;
+      outline: none;
+      resize: none;
+      height: 110px;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 0.5s ease, border-color 0.2s, background 0.2s;
     }
-    #tw-textarea.visible { opacity: 1; }
-    #tw-textarea:focus     { border-color: var(--red); background: #fff; }
-    #tw-textarea::placeholder { color: #bbb; }
+
+    #tw-textarea.visible {
+      opacity: 1;
+    }
+
+    #tw-textarea:focus {
+      border-color: var(--red);
+      background: #fff;
+    }
+
+    #tw-textarea::placeholder {
+      color: #bbb;
+    }
 
     /* Barra inferior */
     #tw-bottom {
-      margin-top: 20px; padding-top: 0;
-      display: flex; align-items: center; justify-content: flex-start; gap: 20px;
-      opacity: 0; transition: opacity 0.5s ease;
+      margin-top: 20px;
+      padding-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
-    #tw-bottom.visible { opacity: 1; }
-    #tw-pnum { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; color: #bbb; }
+
+    #tw-bottom.visible {
+      opacity: 1;
+    }
+
+    #tw-pnum {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #bbb;
+    }
 
     .btn-next {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #111; color: #fff; border: none; border-radius: 2px;
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 10px 22px; cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      cursor: pointer;
       transition: background 0.2s, transform 0.2s;
     }
-    .btn-next:hover    { background: var(--red); transform: translateX(4px); }
-    .btn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
 
-    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
-    .shake { animation: shake 0.3s ease; }
+    .btn-next:hover {
+      background: var(--red);
+      transform: translateX(4px);
+    }
+
+    .btn-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-6px);
+      }
+
+      75% {
+        transform: translateX(6px);
+      }
+    }
+
+    .shake {
+      animation: shake 0.3s ease;
+    }
 
     /* ══════════════════════════════════
        PANTALLA DE ÉXITO
     ══════════════════════════════════ */
     #tw-success {
-      position: fixed; inset: 0; z-index: 21;
+      position: fixed;
+      inset: 0;
+      z-index: 21;
       background: var(--red);
-      display: none; flex-direction: column;
-      align-items: flex-start; justify-content: center;
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
       padding: clamp(32px, 5vw, 80px) clamp(28px, 9vw, 130px);
-      opacity: 0; transition: opacity 0.8s ease;
+      opacity: 0;
+      transition: opacity 0.8s ease;
     }
-    #tw-success.showing { display: flex; }
-    #tw-success.visible { opacity: 1; }
-    .s-check { width: 54px; height: 54px; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; }
-    .s-check svg { width: 22px; height: 22px; }
-    .s-label  { font-size: 9px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 12px; }
-    .s-title  { font-size: clamp(24px, 3.5vw, 40px); font-weight: 900; color: #fff; line-height: 1.0; margin-bottom: 18px; }
-    .s-title em { display: block; font-style: italic; font-weight: 300; }
-    .s-text   { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.85; max-width: 380px; }
+
+    #tw-success.showing {
+      display: flex;
+    }
+
+    #tw-success.visible {
+      opacity: 1;
+    }
+
+    .s-check {
+      width: 54px;
+      height: 54px;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .s-check svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .s-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 12px;
+    }
+
+    .s-title {
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 18px;
+    }
+
+    .s-title em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .s-text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.85;
+      max-width: 380px;
+    }
 
     /* ══════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════ */
     @media (max-width: 768px) {
+
       /* En móvil: solo se ve la hoja derecha — posicionar sobre ella */
       #tw-container.pos-right-single,
       #tw-container.pos-right-single-b,
       #tw-container.pos-left-double,
       #tw-container.pos-right-double {
-        left: 52%; right: 5%;
-        top: 18%; bottom: 5%;
+        left: 52%;
+        right: 5%;
+        top: 18%;
+        bottom: 5%;
       }
-      #tw-question  { font-size: 18px; margin-bottom: 18px; }
-      #tw-options   { gap: 8px; }
-      .tw-option    { padding: 10px 13px; }
-      .tw-option span { font-size: 12px; line-height: 1.4; }
-      #tw-textarea  { height: 100px; font-size: 13px; }
-      #tw-bottom    { flex-direction: row; gap: 12px; align-items: center; }
-      .btn-next     { padding: 11px 22px; }
-      .btn-intro    { padding: 12px 24px; font-size: 9px; }
-      #tw-header    { margin-bottom: 20px; }
-      .tw-logo      { height: 16px; }
-      #tw-qnum      { font-size: 8px; }
+
+      #tw-question {
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+
+      #tw-options {
+        gap: 8px;
+      }
+
+      .tw-option {
+        padding: 10px 13px;
+      }
+
+      .tw-option span {
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      #tw-textarea {
+        height: 100px;
+        font-size: 13px;
+      }
+
+      #tw-bottom {
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .btn-next {
+        padding: 11px 22px;
+      }
+
+      .btn-intro {
+        padding: 12px 24px;
+        font-size: 9px;
+      }
+
+      #tw-header {
+        margin-bottom: 20px;
+      }
+
+      .tw-logo {
+        height: 16px;
+      }
+
+      #tw-qnum {
+        font-size: 8px;
+      }
     }
 
     @media (max-width: 480px) {
+
       #tw-container.pos-right-single,
       #tw-container.pos-right-single-b,
       #tw-container.pos-left-double,
       #tw-container.pos-right-double {
-        left: 54%; right: 4%;
-        top: 16%; bottom: 4%;
+        left: 54%;
+        right: 4%;
+        top: 16%;
+        bottom: 4%;
       }
-      #tw-question  { font-size: 15px; }
-      .tw-option span { font-size: 11px; }
-      #tw-textarea  { height: 90px; }
-      #tw-bottom    { flex-direction: column; gap: 10px; align-items: stretch; }
-      .btn-next     { width: 100%; justify-content: center; font-size: 9px; }
+
+      #tw-question {
+        font-size: 15px;
+      }
+
+      .tw-option span {
+        font-size: 11px;
+      }
+
+      #tw-textarea {
+        height: 90px;
+      }
+
+      #tw-bottom {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+      }
+
+      .btn-next {
+        width: 100%;
+        justify-content: center;
+        font-size: 9px;
+      }
     }
   </style>
 </head>
@@ -408,19 +808,19 @@
     const answers = {};
 
     /* ── DOM refs ── */
-    const veil        = document.getElementById('veil');
-    const cover1      = document.getElementById('cover1');
-    const coverVideo  = document.getElementById('cover-video');
+    const veil = document.getElementById('veil');
+    const cover1 = document.getElementById('cover1');
+    const coverVideo = document.getElementById('cover-video');
     const coverVideo2 = document.getElementById('cover-video2');
-    const coverClip1  = document.getElementById('cover-clip1');
-    const coverClip2  = document.getElementById('cover-clip2');
-    const intro       = document.getElementById('intro');
-    const vid1        = document.getElementById('vid1');
-    const vidEntrada  = document.getElementById('vid-entrada');
-    const vidVideo2   = document.getElementById('vid-video2');
-    const vidClip1    = document.getElementById('vid-clip1');
-    const vidClip2    = document.getElementById('vid-clip2');
-    const twScene     = document.getElementById('tw-scene');
+    const coverClip1 = document.getElementById('cover-clip1');
+    const coverClip2 = document.getElementById('cover-clip2');
+    const intro = document.getElementById('intro');
+    const vid1 = document.getElementById('vid1');
+    const vidEntrada = document.getElementById('vid-entrada');
+    const vidVideo2 = document.getElementById('vid-video2');
+    const vidClip1 = document.getElementById('vid-clip1');
+    const vidClip2 = document.getElementById('vid-clip2');
+    const twScene = document.getElementById('tw-scene');
     const twContainer = document.getElementById('tw-container');
 
     /* ── Selección de video según dispositivo ── */
@@ -446,20 +846,46 @@
       if (vid1.duration && vid1.currentTime >= vid1.duration - 0.15) showIntro();
     });
 
-    /* En mobile el autoplay puede fallar: si en 1.5s el video no arrancó, mostramos intro */
-    vid1.play().catch(() => {});
+    /* En mobile el autoplay puede fallar: dar más tiempo (4000ms) para que cargue */
+    vid1.play().catch(() => { });
     setTimeout(() => {
       if (!introShown && (vid1.paused || vid1.currentTime === 0)) showIntro();
-    }, 1500);
+    }, 4000);
 
     /* ════════════════════════════════════════════
        PASO 2 — click → video_entrada → video2 → clip1 (loop) + Q1 encima
     ════════════════════════════════════════════ */
     function startJourney() {
+      /* Desbloquear videos haciéndolos visibles por un instante */
+      [coverVideo2, coverClip1, coverClip2].forEach(c => {
+        c.style.display = 'block';
+        c.style.opacity = '0.01';
+      });
+
+      [vidVideo2, vidClip1, vidClip2].forEach(v => {
+        let p = v.play();
+        if (p !== undefined) {
+          p.then(() => {
+            v.pause();
+            v.currentTime = 0;
+          }).catch(() => { });
+        } else {
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+
+      setTimeout(() => {
+        [coverVideo2, coverClip1, coverClip2].forEach(c => {
+          c.style.display = 'none';
+          c.style.opacity = '';
+        });
+      }, 50);
+
       intro.classList.remove('visible');
       intro.classList.add('gone');
       coverVideo.style.display = 'block';
-      vidEntrada.play().catch(() => {});
+      vidEntrada.play().catch(() => { });
 
       /* video2 termina → fade out → clip1 → Q1 */
       function onVideo2End() {
@@ -473,7 +899,7 @@
           /* Iniciar clip1, pausar a los 5s y mostrar Q1 */
           coverClip1.style.display = 'block';
           vidClip1.currentTime = 0;
-          vidClip1.play().catch(() => {});
+          vidClip1.play().catch(() => { });
 
           function pauseClip1At5() {
             if (vidClip1.currentTime >= 5) {
@@ -505,7 +931,7 @@
           if (!coverVideo2.style.display || coverVideo2.style.display === 'none') {
             coverVideo.classList.add('fade-out');
             coverVideo2.style.display = 'block';
-            vidVideo2.play().catch(() => {});
+            vidVideo2.play().catch(() => { });
             vidVideo2.addEventListener('ended', onVideo2End);
             vidVideo2.addEventListener('timeupdate', onVideo2TU);
             vidEntrada.removeEventListener('timeupdate', onVideoEntradaTU);
@@ -517,7 +943,7 @@
         if (vidEntrada.paused && vidEntrada.currentTime < 0.5) {
           coverVideo.style.display = 'none';
           coverVideo2.style.display = 'block';
-          vidVideo2.play().catch(() => {});
+          vidVideo2.play().catch(() => { });
           vidVideo2.addEventListener('ended', onVideo2End);
           vidVideo2.addEventListener('timeupdate', onVideo2TU);
         }
@@ -529,14 +955,14 @@
        TYPEWRITER — mostrar pregunta sobre el video activo
     ════════════════════════════════════════════ */
     function showTypewriterQuestion(qIdx) {
-      const q       = QUESTIONS[qIdx];
-      const qEl     = document.getElementById('tw-question');
-      const optEl   = document.getElementById('tw-options');
-      const hintEl  = document.getElementById('tw-hint');
-      const taEl    = document.getElementById('tw-textarea');
-      const botEl   = document.getElementById('tw-bottom');
-      const qnumEl  = document.getElementById('tw-qnum');
-      const pnumEl  = document.getElementById('tw-pnum');
+      const q = QUESTIONS[qIdx];
+      const qEl = document.getElementById('tw-question');
+      const optEl = document.getElementById('tw-options');
+      const hintEl = document.getElementById('tw-hint');
+      const taEl = document.getElementById('tw-textarea');
+      const botEl = document.getElementById('tw-bottom');
+      const qnumEl = document.getElementById('tw-qnum');
+      const pnumEl = document.getElementById('tw-pnum');
       const btnNext = document.getElementById('tw-btn-next');
 
       const label = `0${q.num} / 05`;
@@ -616,7 +1042,7 @@
            Resume clip1 hasta el final → inicia clip2 → pausa a los 3s → Q2 izquierda */
         setTimeout(() => {
           vidClip1.loop = false;
-          vidClip1.play().catch(() => {});
+          vidClip1.play().catch(() => { });
 
           function onClip1Done() {
             vidClip1.removeEventListener('ended', onClip1Done);
@@ -625,7 +1051,7 @@
             coverClip1.classList.add('fade-out');
             coverClip2.style.display = 'block';
             vidClip2.currentTime = 0;
-            vidClip2.play().catch(() => {});
+            vidClip2.play().catch(() => { });
             setTimeout(() => {
               coverClip1.style.display = 'none';
               coverClip1.classList.remove('fade-out');
@@ -670,7 +1096,7 @@
         /* Q3 → Q4:
            Resume clip2 → pausa a los 7s → Q4 derecha */
         setTimeout(() => {
-          vidClip2.play().catch(() => {});
+          vidClip2.play().catch(() => { });
           function clip2PauseAt7() {
             if (vidClip2.currentTime >= 7) {
               vidClip2.pause();
@@ -698,10 +1124,10 @@
     function showInputs(q, optEl, hintEl, taEl, botEl) {
       if (q.type === 'radio') {
         q.options.forEach(opt => {
-          const lbl  = document.createElement('label');
+          const lbl = document.createElement('label');
           lbl.className = 'tw-option';
-          const inp  = document.createElement('input');
-          inp.type   = 'radio'; inp.name = q.name; inp.value = opt;
+          const inp = document.createElement('input');
+          inp.type = 'radio'; inp.name = q.name; inp.value = opt;
           const span = document.createElement('span');
           span.textContent = opt;
           lbl.appendChild(inp); lbl.appendChild(span);
@@ -710,7 +1136,7 @@
         optEl.classList.add('visible');
       } else {
         if (q.hint) { hintEl.textContent = q.hint; hintEl.classList.add('visible'); }
-        taEl.placeholder   = q.placeholder || '';
+        taEl.placeholder = q.placeholder || '';
         taEl.style.display = 'block';
         requestAnimationFrame(() => taEl.classList.add('visible'));
       }
